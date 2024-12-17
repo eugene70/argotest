@@ -1,2 +1,3 @@
-daemonset.enabled: true
+daemonset:
+  enabled: true
 extraEnvVars: [env=dev]
