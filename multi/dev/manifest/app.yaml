@@ -16,6 +16,3 @@ spec:
           create: true
           nodeAccess: true
         existingConfigMap: fluent-bit-config
-  destination:
-    name: "in-cluster"
-    namespace: kube-logging
