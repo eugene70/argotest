@@ -1,0 +1,21 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: fluent-bit
+spec:
+  project: default
+  source:
+    chart: fluent-bit
+    repoURL: registry-1.docker.io/bitnamicharts
+    targetRevision: 2.4.0
+    helm:
+      values: |
+        daemonset:
+          enabled: true
+        rbac:
+          create: true
+          nodeAccess: true
+        existingConfigMap: fluent-bit-config
+  destination:
+    name: "in-cluster"
+    namespace: kube-logging
