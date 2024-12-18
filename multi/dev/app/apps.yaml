@@ -9,9 +9,17 @@ spec:
     server: https://kubernetes.default.svc
     namespace: kube-logging
   sources:
-    - repoURL: https://github.com/eugene70/argotest.git
-      path: multi/dev/manifest
-      targetRevision: main
+    - chart: fluent-bit
+      repoURL: registry-1.docker.io/bitnamicharts
+      targetRevision: 2.4.0
+      helm:
+        values: |
+          daemonset:
+            enabled: true
+          rbac:
+            create: true
+            nodeAccess: true
+          existingConfigMap: fluent-bit-config
     - repoURL: https://github.com/eugene70/argotest.git
       path: multi/dev/configmap
       targetRevision: main
