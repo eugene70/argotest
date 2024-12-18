@@ -1,0 +1,17 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: fluent-bit
+  namespace: argocd
+spec:
+  project: default
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: kube-logging
+  sources:
+    - repoURL: https://github.com/eugene70/argotest.git
+      path: multi/dev/manifest
+      targetRevision: main
+    - repoURL: https://github.com/eugene70/argotest.git
+      path: multi/dev/configmap
+      targetRevision: main
