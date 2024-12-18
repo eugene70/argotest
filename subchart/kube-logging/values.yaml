@@ -1,6 +1,8 @@
 fluent-bit:
   daemonset:
     enabled: true
+  pdb:
+    create: false
   extraEnvVars:
     - name: ENV
       value: dev
