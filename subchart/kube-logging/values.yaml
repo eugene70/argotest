@@ -1,0 +1,10 @@
+fluent-bit:
+  daemonset:
+    enabled: true
+  extraEnvVars:
+    - name: ENV
+      value: dev
+  rbac:
+    create: true
+    nodeAccess: true
+  existingConfigMap: fluent-bit-config
