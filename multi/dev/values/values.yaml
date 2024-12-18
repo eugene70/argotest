@@ -1,0 +1,6 @@
+daemonset:
+  enabled: true
+rbac:
+  create: true
+  nodeAccess: true
+existingConfigMap: fluent-bit-config
