@@ -42,13 +42,13 @@ data:
     [FILTER]
         Name                rewrite_tag
         Match               kube.*
-        Rule                $stream .* dev.kube-$TAG[1].$TAG[3] false
+        Rule                $stream .* {{ .Values.env }}.kube-$TAG[1].$TAG[3] false
         Emitter_Name        re_emitted
     [OUTPUT]
         Name                forward
-        Match               dev.*
-        #Tag                 dev.$kubernetes['namespace_name'].$kubernetes['container_name']
-        Host                dev-logproxy.hanatour.com
+        Match               {{ .Values.env }}.*
+        #Tag                 {{ .Values.env }}.$kubernetes['namespace_name'].$kubernetes['container_name']
+        Host                {{ .Values.env }}-logproxy.hanatour.com
         Port                9880
         Compress            gzip
     [OUTPUT]

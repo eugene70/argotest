@@ -1,3 +1,4 @@
+env: dev
 fluent-bit:
   daemonset:
     enabled: true
